@@ -55,7 +55,7 @@ def predict():
         filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
         file.save(filepath)
         
-        # Jika model belum ada, gunakan mock response untuk mengetes UI
+        # J
         if model is None:
             import random
             import time
