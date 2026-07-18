@@ -9,10 +9,10 @@ app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'static/uploads'
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 16 MB 
 
-#h
+# memastikan folder uploads ada
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
-# Global variable for model
+# Global variable untuk model
 model = None
 MODEL_PATH = 'models/best_model.h5' # Sesuaikan dgn model terbaik 
 
