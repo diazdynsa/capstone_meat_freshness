@@ -18,4 +18,4 @@ COPY . .
 ENV PORT=5000
 
 # Start Gunicorn server
-CMD gunicorn app:app --bind 0.0.0.0:$PORT --timeout 120 --workers 1 --threads 2
+CMD gunicorn app:app --bind 0.0.0.0:${PORT:-5000} --timeout 120 --workers 1 --threads 2

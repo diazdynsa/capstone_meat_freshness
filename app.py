@@ -85,6 +85,8 @@ def predict():
         except Exception as e:
             return jsonify({'error': str(e)})
 
+# Load model saat aplikasi dijalankan (baik via python app.py maupun gunicorn)
+load_prediction_model()
+
 if __name__ == '__main__':
-    load_prediction_model()
     app.run(debug=True, port=5000)
