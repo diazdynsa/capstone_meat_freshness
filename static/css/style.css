@@ -1,0 +1,296 @@
+:root {
+    --primary-red: #E63946;
+    --primary-red-hover: #F25C68;
+    --dark-bg: #0B0F19;
+    --card-bg: #161D2B;
+    --text-main: #F8F9FA;
+    --text-muted: #94A3B8;
+    --fresh-color: #10B981;
+    --half-color: #F59E0B;
+    --spoiled-color: #EF4444;
+    --border-color: #2E364F;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+}
+
+body {
+    background-color: var(--dark-bg);
+    color: var(--text-main);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+.app-container {
+    width: 100%;
+    max-width: 900px;
+    padding: 3rem 2rem;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 3.5rem;
+    animation: fadeInDown 0.8s ease;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    font-size: 2.5rem;
+}
+
+.logo h1 {
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.dot {
+    color: var(--primary-red);
+}
+
+.subtitle {
+    color: var(--text-muted);
+    margin-top: 0.8rem;
+    font-size: 1.15rem;
+    font-weight: 300;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.5;
+}
+
+/* Solid Premium Card (No Glassmorphism) */
+.solid-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 24px;
+    padding: 3rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.upload-box {
+    border: 2px dashed var(--border-color);
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    animation: fadeInUp 0.8s ease 0.2s both;
+    background-color: rgba(255,255,255, 0.01);
+}
+
+.upload-box:hover, .upload-box.dragover {
+    border-color: var(--primary-red);
+    background-color: rgba(230, 57, 70, 0.05);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(230, 57, 70, 0.1);
+}
+
+.upload-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.upload-box:hover .upload-icon {
+    transform: scale(1.1);
+}
+
+.upload-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-main);
+}
+
+.upload-content p {
+    color: var(--text-muted);
+}
+
+.browse-btn {
+    color: var(--primary-red);
+    font-weight: 600;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.format-info {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-top: 1rem;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Loading Section */
+.loading-section {
+    text-align: center;
+    padding: 5rem 0;
+    animation: fadeIn 0.5s ease;
+}
+
+.spinner {
+    width: 65px;
+    height: 65px;
+    border: 4px solid var(--border-color);
+    border-left-color: var(--primary-red);
+    border-radius: 50%;
+    margin: 0 auto 1.5rem;
+    animation: spin 1s linear infinite;
+}
+
+.loading-section p {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+}
+
+/* Result Section */
+.result-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    padding: 2.5rem;
+    animation: fadeInUp 0.6s ease;
+}
+
+.image-preview {
+    border-radius: 16px;
+    overflow: hidden;
+    height: 320px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    position: relative;
+}
+
+.image-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.image-preview:hover img {
+    transform: scale(1.05);
+}
+
+.analysis-data {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.analysis-data h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.2rem;
+    color: #FFF;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 0.6rem 1.8rem;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    align-self: flex-start;
+}
+
+.status-badge.fresh { 
+    background-color: rgba(16, 185, 129, 0.15); 
+    color: var(--fresh-color);
+    border: 1px solid var(--fresh-color);
+}
+.status-badge.half { 
+    background-color: rgba(245, 158, 11, 0.15); 
+    color: var(--half-color);
+    border: 1px solid var(--half-color);
+}
+.status-badge.spoiled { 
+    background-color: rgba(239, 68, 68, 0.15); 
+    color: var(--spoiled-color);
+    border: 1px solid var(--spoiled-color);
+}
+
+.metric {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.8rem;
+    font-weight: 500;
+}
+
+.progress-bar {
+    height: 10px;
+    background: var(--border-color);
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 2.5rem;
+    position: relative;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background: var(--primary-red);
+    border-radius: 5px;
+    transition: width 1.5s cubic-bezier(0.1, 0.8, 0.2, 1);
+    box-shadow: 0 0 10px var(--primary-red);
+}
+
+.btn-primary {
+    background: var(--primary-red);
+    color: white;
+    border: none;
+    padding: 1.2rem 2rem;
+    border-radius: 14px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.3s ease;
+    margin-top: auto;
+    letter-spacing: 0.5px;
+}
+
+.btn-primary:hover {
+    background: var(--primary-red-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(230, 57, 70, 0.3);
+}
+
+footer {
+    margin-top: auto;
+    text-align: center;
+    padding-top: 3rem;
+    padding-bottom: 1.5rem;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+@keyframes spin { 100% { transform: rotate(360deg); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+    .result-card { grid-template-columns: 1fr; gap: 1.5rem; }
+    .image-preview { height: 250px; }
+    .app-container { padding: 2rem 1.5rem; }
+}

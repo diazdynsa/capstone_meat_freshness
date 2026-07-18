@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MeatSight - Analisis Kesegaran Daging</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <div class="logo">
+                <span class="icon">🥩</span>
+                <h1>MeatSight<span class="dot">.</span>AI</h1>
+            </div>
+            <p class="subtitle">Deteksi tingkat kesegaran daging dengan akurasi tinggi menggunakan Transfer Learning (MobileNetV2 & VGG16)</p>
+        </header>
+
+        <main class="main-content">
+            <!-- Upload Area -->
+            <section class="upload-section">
+                <div class="solid-card upload-box" id="drop-area">
+                    <input type="file" id="file-input" accept="image/*" hidden>
+                    <div class="upload-content">
+                        <div class="upload-icon">📸</div>
+                        <h3>Unggah Foto Daging</h3>
+                        <p>Drag & drop file gambar di sini, atau <span class="browse-btn" onclick="document.getElementById('file-input').click()">cari file</span></p>
+                        <p class="format-info">Format: JPG, PNG (Max 16MB)</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Loading State -->
+            <section class="loading-section hidden" id="loading-area">
+                <div class="spinner"></div>
+                <p>Menganalisis serat dan warna daging...</p>
+            </section>
+
+            <!-- Result Area -->
+            <section class="result-section hidden" id="result-area">
+                <div class="solid-card result-card">
+                    <div class="image-preview">
+                        <img id="preview-img" src="" alt="Preview Daging">
+                    </div>
+                    <div class="analysis-data">
+                        <h2>Hasil Analisis AI</h2>
+                        <div class="status-badge" id="status-badge">Fresh</div>
+                        
+                        <div class="metric">
+                            <span class="label">Tingkat Keyakinan (Confidence)</span>
+                            <span class="value" id="confidence-val">98.5%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="confidence-bar"></div>
+                        </div>
+
+                        <div class="action-buttons">
+                            <button class="btn-primary" onclick="resetApp()">Analisis Gambar Lain</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <footer>
+            <p>&copy; 2026 Capstone Project AI - Transfer Learning Classification</p>
+        </footer>
+    </div>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
