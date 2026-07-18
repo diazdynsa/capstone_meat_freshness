@@ -1,8 +1,3 @@
-# ==============================================================================
-# SCRIPT TRAINING MODEL KLAFIKASI KESEGARAN DAGING (CAPSTONE PROJECT)
-# Salin baris-baris ini ke dalam cell Jupyter Notebook (.ipynb) Anda.
-# ==============================================================================
-
 # 1. IMPORT LIBRARY
 import tensorflow as tf
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
@@ -14,7 +9,7 @@ import matplotlib.pyplot as plt
 import os
 
 # 2. SETUP DATASET & AUGMENTASI
-# Memastikan path dataset selalu valid dari mana pun script di-run
+# Memastikan path dataset selalu valid
 base_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'dataset')
 train_dir = os.path.join(base_dir, 'train')
 val_dir = os.path.join(base_dir, 'val')
@@ -48,11 +43,11 @@ val_generator = val_datagen.flow_from_directory(
     class_mode='categorical'
 )
 
-# 3. MEMBANGUN MODEL 1: MOBILENETV2 (Baseline)
+# 3. MEMBANGUN MODEL 1: MOBILENETV2 
 print("\n=== Membangun Arsitektur MobileNetV2 ===")
 base_model_1 = MobileNetV2(weights='imagenet', include_top=False, input_shape=(224, 224, 3))
 for layer in base_model_1.layers:
-    layer.trainable = False # Freeze weights pre-trained
+    layer.trainable = False 
 
 x1 = base_model_1.output
 x1 = GlobalAveragePooling2D()(x1)
@@ -71,7 +66,7 @@ history_mobilenet = model_mobilenet.fit(
     validation_data=val_generator
 )
 
-# 5. MEMBANGUN MODEL 2: VGG16 (Untuk Perbandingan)
+# 5. MEMBANGUN MODEL 2: VGG16 
 print("\n=== Membangun Arsitektur VGG16 ===")
 base_model_2 = VGG16(weights='imagenet', include_top=False, input_shape=(224, 224, 3))
 for layer in base_model_2.layers:
